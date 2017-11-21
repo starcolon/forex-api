@@ -39,6 +39,7 @@ class CacheableForexEndPoint(apiKey: String, ttl: Int = 300) extends ForexEndPoi
   override def getExchange(params: Map[String, String]): Option[ServiceOutput] = {
 
     val pair = Seq(params("from"), params("to")).mkString("-")
+    val invertPair = Seq(params("to"), params("from")).mkString("-")
     cache.readKey(pair) match {
       case Some(ratioStr) => 
         println(Console.CYAN + s"[RESTORE FROM CACHE] $pair" + Console.RESET)
@@ -47,10 +48,12 @@ class CacheableForexEndPoint(apiKey: String, ttl: Int = 300) extends ForexEndPoi
         super.getExchange(params) match {
           case None => None
           case Some(res: ExchangeRate) =>
-            // Cache the ratio
+            // Cache the ratio (both directional values)
             val ratio = res.value / params("quantity").toDouble
+            val invertRatio = params("quantity").toDouble / res.value
             println(Console.CYAN + s"[CACHING] $pair = $ratio" + Console.RESET)
             cache.writeKey(pair, ratio.toString)
+            cache.writeKey(invertPair, invertRatio.toString)
             Some(res)
           case Some(others) => Some(others)
         }
