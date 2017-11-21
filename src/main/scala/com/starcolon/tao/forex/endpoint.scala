@@ -18,7 +18,7 @@ class ForexEndPoint extends RESTEndpoint {
     println(resp.body)
   }
 
-  def getAs[T](params: Map[String, String]): Option[T] = {
+  def getAs[T: Manifest](params: Map[String, String]): Option[T] = {
     val resp = get(params)
     resp.code match {
       case 200 => parseAs[T](resp.body)
