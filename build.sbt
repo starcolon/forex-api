@@ -12,5 +12,6 @@ libraryDependencies ++= Seq(
   "com.typesafe"        % "config" % "1.3.0",
   "org.slf4j"           % "slf4j-nop" % "1.6.4",
   "org.scalaj"          %% "scalaj-http" % "2.3.0",
-  "org.json4s"          %% "json4s-native" % "3.6.0-M1"
+  "org.json4s"          %% "json4s-native" % "3.6.0-M1",
+  "net.debasishg"       %% "redisclient" % "3.4"
 )
