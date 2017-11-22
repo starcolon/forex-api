@@ -25,8 +25,8 @@ trait API extends JSONParser {
       get {
         parameters('from.as[String], 'to.as[String], 'quantity.as[String]) {
           (from, to, quantity) => 
-            val params = Map("from"     -> from,
-                             "to"       -> to,
+            val params = Map("from"     -> from.toUpperCase,
+                             "to"       -> to.toUpperCase,
                              "quantity" -> quantity)
             forex.getExchange(params) match {
               case Some(xg: ExchangeRate) => complete(xg)
