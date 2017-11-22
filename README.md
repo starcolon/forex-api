@@ -8,7 +8,7 @@ Forex REST interface with shorterm cache
 The project requires the following:
 
 - [Redis](https://redis.io/)
-- [Forex API Key](https://1forge.com/forex-data-api/api-documentation) has to be stored in system variable `FOREX_API_KEY`
+- [Forex API Key](https://1forge.com/forex-data-api/api-documentation) has to be stored as a system variable named `FOREX_API_KEY`
 
 To compile the project, execute:
 
