@@ -16,6 +16,7 @@ libraryDependencies ++= Seq(
   "org.slf4j"           % "slf4j-nop" % "1.6.4",
   "org.scalaj"          %% "scalaj-http" % "2.3.0",
   "org.json4s"          %% "json4s-native" % "3.6.0-M1",
+  "io.spray"            %% "spray-json" % "1.3.3",
   "net.debasishg"       %% "redisclient" % "3.4",
   "com.typesafe.akka"   %% "akka-actor" % akkaVersion,
   "com.typesafe.akka"   %% "akka-stream" % akkaVersion,

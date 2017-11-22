@@ -45,6 +45,7 @@ class CacheableForexEndPoint(apiKey: String, ttl: Int = 300) extends ForexEndPoi
         println(Console.CYAN + s"[RESTORE FROM CACHE] $pair" + Console.RESET)
         Some(mimicResponse(ratioStr.toDouble, params))
       case None => 
+        println(Console.YELLOW + s"[REQUESTING FOREX] $pair" + Console.RESET)
         super.getExchange(params) match {
           case None => None
           case Some(res: ExchangeRate) =>
